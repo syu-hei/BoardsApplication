@@ -25,8 +25,7 @@ class Board extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'title' => true,
-        'content' => true,
+        '*' => true,
+        'id' => false
     ];
 }
