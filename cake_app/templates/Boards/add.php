@@ -6,13 +6,13 @@
 <?=$this->Form->create($entity) ?>
 <fieldset>
 	<div class="error"><?=$this->Form->error('name') ?></div>
-	<?=$this->Form->input('name',['type'=>'text']) ?>
+	名前 : <?=$this->Form->input('name',['type'=>'text']) ?>
 	<div class="error"><?=$this->Form->error('password') ?></div>
-	<?=$this->Form->input('password',['type'=>'password']) ?>
+	パスワード : <?=$this->Form->input('password',['type'=>'password']) ?>
 	<div class="error"><?=$this->Form->error('title') ?></div>
-	<?=$this->Form->input('title',['type'=>'text']) ?>
+	タイトル : <?=$this->Form->input('title',['type'=>'text']) ?>
 	<div class="error"><?=$this->Form->error('content') ?></div>
-	<?=$this->Form->textarea("content") ?>
+	内容 : <?=$this->Form->textarea("content") ?>
 </fieldset>
 <?=$this->Form->button("送信") ?>
 <?=$this->Form->end() ?>
