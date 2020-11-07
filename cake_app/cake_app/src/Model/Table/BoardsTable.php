@@ -38,9 +38,6 @@ class BoardsTable extends Table
         parent::initialize($config);
 
         $this->belongsTo('People');
-        $this->setTable('boards');
-        $this->setDisplayField('name');
-        $this->setPrimaryKey('id');
     }
 
     /**

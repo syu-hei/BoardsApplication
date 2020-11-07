@@ -1,3 +1,4 @@
-# boardsTableとpeopleTableの連携
-boardsTableの他に新たにpeopleTableを作成し、belongsTo()メソッドやhasMany()メソッドを用いて  
-互いのレコードを取得し連携出来るように設定しました。
+# 掲示板システムの作成
+BoardsTableの他に新たにPeopleTableを元に、掲示板システムを作成しました。
+* CRUD機能
+* database連携機能

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-
+use App\Controller\AppController;
 /**
  * People Controller
  *
@@ -11,11 +11,6 @@ namespace App\Controller;
  */
 class PeopleController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function index()
     {
         $people = $this->paginate($this->People);
@@ -23,20 +18,13 @@ class PeopleController extends AppController
         $this->set(compact('people'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Person id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $person = $this->People->get($id, [
             'contain' => ['Boards'],
         ]);
 
-        $this->set(compact('person'));
+        $this->set('person', $person);
     }
 
     /**
