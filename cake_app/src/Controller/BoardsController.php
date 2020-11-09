@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
+use Cake\I18n\I18n;
 /**
  * Boards Controller
  *
@@ -14,18 +15,25 @@ use Cake\Validation\Validator;
 class BoardsController extends AppController
 {
     private $people;
+    public $paginate = [
+      'limit' => 5,
+      'order' => [
+        'id' => 'DESC'
+      ],
+      'contain' => ['People']
+    ];
 
     public function initialize(): void{
 		parent::initialize();
-		$this->people = TableRegistry::getTableLocator()->get('People');
+    $this->people = TableRegistry::getTableLocator()->get('People');
+    I18n::setLocale('ja_JP');
+    $this->loadComponent('Paginator');
     }
 
     public function index(){
-        $data = $this->Boards
-          ->find('all')
-          ->order(['Boards.id' => 'DESC'])
-			    ->contain(['People']);
-		    $this->set('data',$data);
+        $data = $this->paginate($this->Boards);
+        $this->set('data',$data);
+        $this->set('count',$data->count());
     }
 
     public function add(){
