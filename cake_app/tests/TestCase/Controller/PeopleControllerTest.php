@@ -14,8 +14,6 @@ use Cake\TestSuite\TestCase;
  */
 class PeopleControllerTest extends TestCase
 {
-    use IntegrationTestTrait;
-
     /**
      * Fixtures
      *

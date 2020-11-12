@@ -1,77 +1,41 @@
 <?php
-declare(strict_types=1);
-
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\BoardsController;
 use Cake\TestSuite\IntegrationTestTrait;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
-/**
- * App\Controller\BoardsController Test Case
- *
- * @uses \App\Controller\BoardsController
- */
-class BoardsControllerTest extends TestCase
-{
+class BoardsControllerTest extends TestCase {
     use IntegrationTestTrait;
 
-    /**
-     * Fixtures
-     *
-     * @var array
-     */
-    protected $fixtures = [
-        'app.Boards',
-    ];
+	public $fixtures = [
+		'app.boards',
+		'app.people'
+	];
 
-    /**
-     * Test index method
-     *
-     * @return void
-     */
-    public function testIndex(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+	public function testIndex() :void{
+		$this->get('/boards');
+		$this->assertResponseOk();
+	}
 
-    /**
-     * Test view method
-     *
-     * @return void
-     */
-    public function testView(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+	public function testShow() {
+		$this->get('/boards/show/1');
+		$this->assertResponseOk();
+	}
 
-    /**
-     * Test add method
-     *
-     * @return void
-     */
-    public function testAdd(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+	public function testAddPost(){
+		$data = [
+			'name' => 'test name 1',
+			'password' => 'test password 1',
+			'title' => 'test new title 1',
+			'content' => 'test new content 1'
+		];
+		$this->post('/boards/add', $data);
 
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+		$this->assertResponseSuccess();
+		$boards = TableRegistry::getTableLocator()->get('Boards');
+		$query = $boards->find()->where(['title' => $data['title']]);
+		$this->assertEquals(1, $query->count());
+	}
 }

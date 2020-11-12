@@ -1,63 +1,44 @@
 <?php
-declare(strict_types=1);
-
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\BoardsTable;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
-/**
- * App\Model\Table\BoardsTable Test Case
- */
-class BoardsTableTest extends TestCase
-{
-    /**
-     * Test subject
-     *
-     * @var \App\Model\Table\BoardsTable
-     */
-    protected $Boards;
+class BoardsTableTest extends TestCase {
 
-    /**
-     * Fixtures
-     *
-     * @var array
-     */
-    protected $fixtures = [
-        'app.Boards',
-    ];
+	public $BoardsTable;
 
-    /**
-     * setUp method
-     *
-     * @return void
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-        $config = $this->getTableLocator()->exists('Boards') ? [] : ['className' => BoardsTable::class];
-        $this->Boards = $this->getTableLocator()->get('Boards', $config);
-    }
+	public $fixtures = [
+		'app.boards',
+		'app.people'
+	];
 
-    /**
-     * tearDown method
-     *
-     * @return void
-     */
-    public function tearDown(): void
-    {
-        unset($this->Boards);
+	public function setUp() :void{
+		parent::setUp();
+		$config = TableRegistry::getTableLocator()->exists('Boards') ? [] : 
+			['className' => 'App\Model\Table\BoardsTable'];
+		$this->BoardsTable = TableRegistry::getTableLocator()->get('Boards', $config);
+	}
 
-        parent::tearDown();
-    }
+	public function tearDown() :void{
+		unset($this->BoardsTable);
+		parent::tearDown();
+	}
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+	public function testInitialize() {
+	}
+
+	public function testValidationDefault() {
+	}
+
+	/** find Board test */
+	public function testBoardsTableFind() {
+		$result = $this->BoardsTable->find('all')->first();
+		$this->assertFalse(empty($result));
+		$this->assertTrue(is_a($result,'App\Model\Entity\Board'));
+		$this->assertEquals($result->id, 1001);
+		$this->assertStringStartsWith('test title 1', $result->title);
+	}
+
 }
