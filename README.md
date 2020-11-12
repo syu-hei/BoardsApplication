@@ -9,4 +9,4 @@ There was 1 failure:
 1) App\Test\TestCase\Controller\BoardsControllerTest::testAddPost
 Possibly related to Cake\Http\Exception\InvalidCsrfTokenException: "Missing or incorrect CSRF cookie type."
 
-と表示され他ので、CSRF対策を行おうと思います。
+と表示されたので、CSRF対策を行おうと思います。
