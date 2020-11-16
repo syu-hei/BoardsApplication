@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Board $nextBoard
+ */
+?>
+
 <h1>投稿フォーム</h1>
 <p><?=$this->Html->link(
     '※一覧に戻る',

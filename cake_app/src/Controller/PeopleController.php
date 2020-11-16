@@ -11,6 +11,12 @@ use App\Controller\AppController;
  */
 class PeopleController extends AppController
 {
+    public function initialize(): void{
+        parent::initialize();
+
+        $this->viewBuilder()->setLayout('people');
+    }
+
     public function index()
     {
         $people = $this->paginate($this->People);
@@ -89,5 +95,20 @@ class PeopleController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function isAuthorized($user = null){
+        $action = $this->request->getParam('action');
+
+        if (in_array($action, ['index','view'])){
+            return true;
+        }
+        if($user['role'] === 'admin'){
+           return true;
+        }
+        if($user['role'] === 'user'){
+           return true;
+        }
+        return false;
     }
 }

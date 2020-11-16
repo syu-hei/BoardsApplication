@@ -6,6 +6,7 @@ namespace App\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 use Cake\I18n\I18n;
+use Cake\Event\EventInterface;
 /**
  * Boards Controller
  *
@@ -28,6 +29,7 @@ class BoardsController extends AppController
     $this->people = TableRegistry::getTableLocator()->get('People');
     I18n::setLocale('ja_JP');
     $this->loadComponent('Paginator');
+    $this->viewBuilder()->setLayout('boards');
     }
 
     public function index(){
@@ -98,4 +100,24 @@ class BoardsController extends AppController
       }
       $this->set('entity',$board);
     }
+
+    public function beforeFilter(EventInterface $event) {
+      parent::beforeFilter($event);
+      $this->Auth->allow(['index']);
+  }
+
+    public function isAuthorized($user = null){
+      $action = $this->request->getParam('action');
+
+      if (in_array($action, ['index','view'])){
+          return true;
+      }
+      if($user['role'] === 'admin'){
+         return true;
+      }
+      if($user['role'] === 'user'){
+         return true;
+      }
+      return false;
+  }
 }
