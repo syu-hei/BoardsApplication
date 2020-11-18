@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Person $person
+ * @var \App\Model\Entity\User $user
  */
 ?>
 <div class="row">
@@ -10,21 +10,21 @@
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $person->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $person->id), 'class' => 'side-nav-item']
+                ['action' => 'delete', $user->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List People'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
-        <div class="people form content">
-            <?= $this->Form->create($person) ?>
+        <div class="users form content">
+            <?= $this->Form->create($user) ?>
             <fieldset>
-                <legend><?= __('Edit Person') ?></legend>
+                <legend><?= __('Edit User') ?></legend>
                 <?php
-                    echo $this->Form->control('name');
+                    echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('comment');
+                    echo $this->Form->control('role');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

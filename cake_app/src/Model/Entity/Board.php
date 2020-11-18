@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * Board Entity
  *
  * @property int $id
- * @property string $name
+ * @property string $username
  * @property string|null $title
  * @property string|null $content
  */

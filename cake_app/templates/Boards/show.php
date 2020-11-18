@@ -5,7 +5,7 @@
 ) ?></p>
 <table>
 	<tr><th width="25%">投稿者</th>
-		<td><?=$data['person']['name'] ?></td></tr>
+		<td><?=$data['user']['username'] ?></td></tr>
 	<tr><th width="25%">タイトル</th>
 		<td><?=$data['title'] ?></td></tr>
 	<tr><th width="25%">内容</th>

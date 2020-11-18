@@ -38,11 +38,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>cake</span>php</a>
+            <a href="<?= $this->Url->build('/') ?>"><span>Boa</span>rds</a>
         </div>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="./boards/index">boards</a>
-            <a target="_blank" rel="noopener" href="./people/index">people</a>
+            <a target="_blank" rel="noopener" href="./users/index">UserList</a>
         </div>
     </nav>
     <main class="main">

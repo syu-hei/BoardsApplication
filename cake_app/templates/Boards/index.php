@@ -5,7 +5,7 @@
 <table>
 <tr>
 	<th><?=$this->Paginator->sort('id','投稿順') ?></th>
-	<th><?=$this->Paginator->sort('Person.name','名前') ?></th>
+	<th><?=$this->Paginator->sort('User.username','名前') ?></th>
 	<th><?=$this->Paginator->sort('title','タイトル') ?></th>
 </tr>
 
@@ -14,8 +14,8 @@
 	<td><?=$obj['id']?></td>
 
 	<td style='color:#000066; background-color: #CCCCFF'><?=$this->Html->link(
-		$obj['person']['name'],
-		['action' => 'show2',$obj['person_id']]
+		$obj['user']['username'],
+		['action' => 'show2',$obj['user_id']]
 	) ?></td>
 
 
