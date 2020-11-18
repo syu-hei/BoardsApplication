@@ -12,8 +12,8 @@
 ) ?></p>
 <?=$this->Form->create($entity) ?>
 <fieldset>
-	<div class="error"><?=$this->Form->error('name') ?></div>
-	名前 : <?=$this->Form->input('name',['type'=>'text']) ?>
+	<div class="error"><?=$this->Form->error('username') ?></div>
+	名前 : <?=$this->Form->input('username',['type'=>'text']) ?>
 	<div class="error"><?=$this->Form->error('password') ?></div>
 	パスワード : <?=$this->Form->input('password',['type'=>'password']) ?>
 	<div class="error"><?=$this->Form->error('title') ?></div>

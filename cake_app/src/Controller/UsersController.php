@@ -42,10 +42,10 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => [],
+            'contain' => ['Boards'],
         ]);
 
-        $this->set(compact('user'));
+        $this->set('user', $user);
     }
 
     /**

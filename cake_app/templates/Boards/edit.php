@@ -7,10 +7,10 @@
 <fieldset>
 	<?=$this->Form->create($entity) ?>
 	<?=$this->Form->input('id',['type'=>'hidden']) ?>
-	<?=$this->Form->input('person_id',['type'=>'hidden']) ?>
-	<?=$this->Form->input('name',['type'=>'hidden','value'=>$entity['person']['name']]) ?>
+	<?=$this->Form->input('user_id',['type'=>'hidden']) ?>
+	<?=$this->Form->input('username',['type'=>'hidden','value'=>$entity['user']['username']]) ?>
 	<div class="error"><?=$this->Form->error('name') ?></div>
-	<div>名前：<?=$entity['person']['name'] ?></dov>
+	<div>名前：<?=$entity['user']['username'] ?></dov>
 	<div class="error"><?=$this->Form->error('password') ?></div>
 	<div>パスワード：<?=$this->Form->password('password') ?></div>
 	<div class="error"><?=$this->Form->error('title') ?></div>

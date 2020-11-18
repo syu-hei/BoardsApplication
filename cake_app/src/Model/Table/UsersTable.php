@@ -42,7 +42,7 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-
+        $this->hasMany('Boards');
         $this->addBehavior('Timestamp');
     }
 
