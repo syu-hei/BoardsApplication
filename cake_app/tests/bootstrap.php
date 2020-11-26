@@ -38,7 +38,7 @@ Configure::write('App.fullBaseUrl', 'http://localhost');
 ConnectionManager::setConfig('test_debug_kit', [
     'className' => 'Cake\Database\Connection',
     'driver' => 'Cake\Database\Driver\Sqlite',
-    'database' => TMP . 'debug_kit.sqlite',
+    'database' => TMP . 'debug_kit.Sqlite',
     'encoding' => 'utf8',
     'cacheMetadata' => true,
     'quoteIdentifiers' => false,

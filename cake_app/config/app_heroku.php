@@ -7,6 +7,8 @@ use Cake\Error\ExceptionRenderer;
 use Cake\Log\Engine\FileLog;
 use Cake\Mailer\Transport\MailTransport;
 
+
+
 return [
     /*
      * Debug Level:
@@ -17,7 +19,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => filter_var(env('DEBUG', false), FILTER_VALIDATE_BOOLEAN),
+    'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
 
     /*
      * Configure basic information about the application.
@@ -76,7 +78,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '91886bfd4c7d65ddcc2373ece550f803684b6bd8aabb0970519117d1c31b7422'),
+        'salt' => env('SALT'),
     ],
 
     /*
@@ -266,7 +268,7 @@ return [
      * to your application's datastores.
      *
      * ### Notes
-     * - Drivers include Mysql Postgres Postgres Sqlserver
+     * - Drivers include Mysql Postgres Sqlite Sqlserver
      *   See vendor\cakephp\cakephp\src\Database\Driver for complete list
      * - Do not use periods in database name - it may lead to error.
      *   See https://github.com/cakephp/cakephp/issues/6471 for details.
@@ -274,6 +276,7 @@ return [
      *   E.g set it to 'utf8mb4' in MariaDB and MySQL and 'utf8' for any
      *   other RDBMS.
      */
+
     'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
