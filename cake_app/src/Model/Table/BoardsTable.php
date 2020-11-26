@@ -52,8 +52,8 @@ class BoardsTable extends Table
             ->integer('id');
 
         $validator
-            ->integer('person_id')
-            ->requirePresence('person_id', 'create');
+            ->integer('user_id')
+            ->requirePresence('user_id', 'create');
 
         $validator
             ->scalar('title')
